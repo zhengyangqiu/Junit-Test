@@ -1,6 +1,6 @@
 package com.zhengyang.mockito;
 
-public class Demo {
+public class MathUtils {
     public int add(int a, int b){
         return a+b;
 

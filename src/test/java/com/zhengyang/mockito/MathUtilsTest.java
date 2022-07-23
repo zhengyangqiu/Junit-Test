@@ -1,19 +1,16 @@
 package com.zhengyang.mockito;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DemoTest {
+class MathUtilsTest {
 
     @Test
     void add() {
-        Demo demo= new Demo();
+        MathUtils mathUtils = new MathUtils();
         int expected = 2;
-        int actual = demo.add(1,1);
+        int actual = mathUtils.add(1,1);
         assertEquals(expected,actual,"The add method should add two numbers");
 
         //mock random object
@@ -30,8 +27,8 @@ class DemoTest {
 
     @Test
     void testComputerCircleRadius(){
-        Demo demo = new Demo();
-        assertEquals(314.1592653589793,demo.computerCircleArea(10),"should return right circle area");
+        MathUtils mathUtils = new MathUtils();
+        assertEquals(314.1592653589793, mathUtils.computerCircleArea(10),"should return right circle area");
     }
 
 }
