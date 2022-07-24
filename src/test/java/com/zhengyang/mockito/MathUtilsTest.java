@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+@DisplayName("when running mathutils")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 //only create instance for once no matter the number of methods
 class MathUtilsTest {
@@ -33,16 +34,6 @@ class MathUtilsTest {
         int actual = mathUtils.add(1,1);
         assertEquals(expected,actual,"The add method should add two numbers");
 
-        //mock random object
-//        Random random = Mockito.mock(Random.class);
-//        Mockito.when(random.nextInt()).thenReturn(100);
-//        System.out.println(random.nextInt());
-        //验证是否用了nextint方法
-//        Mockito.verify(random,Mockito.times(1)).nextInt();
-
-
-
-
     }
 
     @Test
@@ -66,4 +57,38 @@ class MathUtilsTest {
     void testDisabled(){
         fail("This test should be disabled");
     }
+
+
+    @Test
+    @DisplayName("Multiple method")
+    void testMultiply(){
+
+        assertAll(
+                ()-> assertEquals(4,mathUtils.multiply(2,2)),
+                ()-> assertEquals(0,mathUtils.multiply(0,2)),
+                ()-> assertEquals(-2,mathUtils.multiply(2,-1))
+
+        );
+    }
+
+    @Nested
+    @DisplayName("Add method")
+    class addTest{
+        @Test
+        @DisplayName("When adding two positive number")
+        void testAddPositive(){
+            assertEquals(2, mathUtils.add(1,1),"should return the right sum");
+
+        }
+        @Test
+        @DisplayName("When adding two negative numbers ")
+        void testAddNegative(){
+            assertEquals(-2, mathUtils.add(-1,-1),"should return the right sum");
+
+        }
+
+
+
+    }
+
 }
