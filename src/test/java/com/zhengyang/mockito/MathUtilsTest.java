@@ -36,8 +36,8 @@ class MathUtilsTest {
 
     }
 
-    @Test
-    void testComputerCircleRadius(){
+    @RepeatedTest(3)
+    void testComputerCircleRadius(RepetitionInfo repetitionInfo){
 
         assertEquals(314.1592653589793, mathUtils.computerCircleArea(10),"should return right circle area");
     }
