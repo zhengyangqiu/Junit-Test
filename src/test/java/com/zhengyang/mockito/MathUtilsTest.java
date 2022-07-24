@@ -16,8 +16,12 @@ class MathUtilsTest {
         System.out.println("This needs to run before all ");
     }
     MathUtils mathUtils;
+    TestInfo testinfo;
+    TestReporter testReporter;
     @BeforeEach
-    void init(){
+    void init(TestInfo testinfo,TestReporter testReporter){
+        this.testinfo=testinfo;
+        this.testReporter=testReporter;
         mathUtils = new MathUtils();
     }
 
@@ -28,6 +32,7 @@ class MathUtilsTest {
 
     @Test
     @DisplayName("test add method")
+    @Tag("Math")
     void add() {
 
         int expected = 2;
@@ -37,6 +42,7 @@ class MathUtilsTest {
     }
 
     @RepeatedTest(3)
+    @Tag("circle")
     void testComputerCircleRadius(RepetitionInfo repetitionInfo){
 
         assertEquals(314.1592653589793, mathUtils.computerCircleArea(10),"should return right circle area");
@@ -60,8 +66,11 @@ class MathUtilsTest {
 
 
     @Test
+    @Tag("Math")
     @DisplayName("Multiple method")
     void testMultiply(){
+        System.out.println("running " + testinfo.getDisplayName()+" with tags" + testinfo.getTags());
+        testReporter.publishEntry("running " + testinfo.getDisplayName()+" with tags" + testinfo.getTags());
 
         assertAll(
                 ()-> assertEquals(4,mathUtils.multiply(2,2)),
@@ -73,6 +82,7 @@ class MathUtilsTest {
 
     @Nested
     @DisplayName("Add method")
+    @Tag("Math")
     class addTest{
         @Test
         @DisplayName("When adding two positive number")
