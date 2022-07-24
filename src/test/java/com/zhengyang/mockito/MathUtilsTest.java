@@ -83,7 +83,9 @@ class MathUtilsTest {
         @Test
         @DisplayName("When adding two negative numbers ")
         void testAddNegative(){
-            assertEquals(-2, mathUtils.add(-1,-1),"should return the right sum");
+            int expected=-2;
+            int actual=mathUtils.add(-1,-1);
+            assertEquals(-2, mathUtils.add(-1,-1),()->"should return sum"+ expected +"but return "+ actual);
 
         }
 
