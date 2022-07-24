@@ -4,6 +4,7 @@ package com.zhengyang.mockito;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 //only create instance for once no matter the number of methods
@@ -51,6 +52,8 @@ class MathUtilsTest {
     }
     @Test
     void testDivide(){
+        boolean isServerUp = false;
+        assumeTrue(isServerUp);
 
         assertThrows(ArithmeticException.class,()-> mathUtils.divide(1,0),"divide by zero should throw");
 
