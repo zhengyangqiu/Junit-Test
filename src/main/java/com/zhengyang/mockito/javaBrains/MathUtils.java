@@ -1,4 +1,4 @@
-package com.zhengyang.mockito;
+package com.zhengyang.mockito.javaBrains;
 
 public class MathUtils {
     public int add(int a, int b){
